@@ -1,103 +1,13 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<title>A Twisted Stream</title>
-	<meta name="description" content="A Twisted Stream">
-	<meta name="author" content="Ryan The Developer">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1.0">
-	<meta property="og:title" content="A Twisted Stream" />
-	<meta property="og:site_name" content="A Twisted Stream" />
-	<meta property="og:description" content="A Twisted Stream" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emissions Viz</title>
 
-	<script src="js/libs/Tween.js"></script>
-	<script src="js/libs/glMatrix-0.9.5.min.js"></script>
-	<script src="js/libs/dat.gui.js"></script>
-	<script src="js/libs/Perlin.js"></script>
-	<script src="js/libs/leap-0.6.3.min.js"></script>
-
-	<script src="js/fbo/SimpleImageLoader.js"></script>
-	<script src="js/fbo/Scheduler.js"></script>
-
-	<script src="js/gl/GLTools.js"></script>
-	<script src="js/gl/GLShader.js"></script>
-	<script src="js/gl/GLTexture.js"></script>
-	<script src="js/gl/Camera.js"></script>
-	<script src="js/gl/Mesh.js"></script>
-	<script src="js/gl/SceneRotation.js"></script>
-	<script src="js/gl/Scene.js"></script>
-	<script src="js/gl/View.js"></script>
-	<script src="js/gl/Framebuffer.js"></script>
-
-	<script src="js/ViewForce.js"></script>
-	<script src="js/ViewCalculate.js"></script>
-	<script src="js/ViewMap.js"></script>
-	<script src="js/ViewSave.js"></script>
-	<script src="js/SceneFlowers.js"></script>
-	<script src="js/Index.js"></script>
-	<script>
-		var main, scheduler, gui, images;
-		var params = {};
-
-		params.numParticles = 512;
-		params.offset = 0;
-		params.posOffset = 4.5;
-		params.velOffset = 0.01;
-		params.accOffset = 0.001;
-		params.timeOffset = 0.001;
-		params.decreaseRate = 0.9963;
-		params.showForceMap = false;
-		params.showMap = false;
-
-		function init() {
-
-			scheduler = new Scheduler();
-			var loader = new SimpleImageLoader();
-
-			var toLoad = [
-				"assets/dot.png",
-				"assets/bg.jpg"
-			];
-
-			loader.load(toLoad, this, this.onImageLoaded);
-		}
-
-
-		function onImageLoaded(imgs) {
-			console.log("Image Loaded :", imgs);
-			images = imgs;
-			main = new Main();
-
-			window.addEventListener("keypress", function (e) {
-				if (e.keyCode == 109) {
-					params.showMap = !params.showMap;
-					params.showForceMap = false;
-				} else if (e.keyCode == 102) {
-					params.showMap = false;
-					params.showForceMap = !params.showForceMap;
-				} else if (e.keyCode == 114) {
-					main.scene.resetCamera();
-
-				}
-			});
-
-		}
-	</script>
 </head>
-
-<body onload="init()">
-	<div class="desc">
-		<h1 class="instruction">A Twisted Stream</h1>
-		<p class="copy">This is a special one guys.<br />Interact with the particles by moving your mouse or by MOVING
-			YOUR HANDS! That's right, give that camera permission to view that sexy face of yours and get to whippin'
-			these particls around like a straight wizard. Get your Harry Potter on and remember to leave me some GOD
-			DAMN LOVE IN THE COMMETS AND REVIEWS! THESE LET PEOPLE KNOW MY ANIMATIONS ARE LEGIT AND LET'S ME KNOW IM
-			DOING A GOOD JOB!</p>
-		<p class="copy">- Press "F" to reveal the texture of gesture force.<br />- Press "R" to
-			reset the camera position.</p>
-	</div>
+<body>
+    <canvas class="webgl"></canvas>
+    <script type="module" src="/main.js"></script>
 </body>
-
 </html>
